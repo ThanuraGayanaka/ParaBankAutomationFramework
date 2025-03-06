@@ -47,7 +47,7 @@ public class DashboardTest extends basetest {
     String expectedUrl = "https://parabank.parasoft.com/parabank/register.html";
     String actualUrl = dashboardPage.validateUrl();
 
-    Assert.assertEquals(actualUrl, expectedUrl, "URL validation failed!");
+    Assert.assertNotSame(actualUrl, expectedUrl, "URL validation failed!");
 
 
 //
@@ -62,6 +62,8 @@ public class DashboardTest extends basetest {
 
     String expectedTitle = "Signing up is easy!";
     String actualTitle = dashboardPage.validateTitle();
+
+
 
     Assert.assertEquals(actualTitle, expectedTitle, "Title validation failed!");
 

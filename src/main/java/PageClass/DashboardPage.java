@@ -38,6 +38,7 @@ this.driver= driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Wait until the element is visible and then get its text
         return wait.until(ExpectedConditions.visibilityOfElementLocated(titleBtn)).getText();
+
     }
 
 
