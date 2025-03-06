@@ -31,7 +31,7 @@ public class basetest {
 
     public void teardown(){
 
-        driver.quit();
+       driver.close();
 
 
 
