@@ -1,6 +1,6 @@
 
 
-package Utilities;
+package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -26,7 +26,7 @@ import java.util.Properties;
 
     public class CommonUtils implements ITestListener {
 
-        private static WebDriver driver;
+        public static WebDriver driver;
         private static Properties properties = new Properties();
 
         // ============================

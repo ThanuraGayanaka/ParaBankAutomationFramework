@@ -2,7 +2,6 @@ package PageClass;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,12 +25,13 @@ this.driver= driver;
 
 
 
-    public void click_regBtn(){
+    public RegistrationPage click_regBtn(){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(12));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(registerBtn))).click();
         String url =driver.getCurrentUrl();
-        }
+        return new RegistrationPage(driver);
+    }
 
 
     public String validateTitle() {
@@ -50,6 +50,9 @@ this.driver= driver;
         wait.until(ExpectedConditions.urlToBe(expectedUrl));
 
         return driver.getCurrentUrl();
+        // Return a new instance of RegistrationPage
+         // Return a new instance of RegistrationPage
+
     }
 
 
