@@ -2,6 +2,7 @@ package TestClass;
 
 import BaseClass.basetest;
 import PageClass.DashboardPage;
+import PageClass.RegistrationPage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -63,9 +64,7 @@ public class DashboardTest extends basetest {
     String expectedTitle = "Signing up is easy!";
     String actualTitle = dashboardPage.validateTitle();
 
-
-
-    Assert.assertEquals(actualTitle, expectedTitle, "Title validation failed!");
+    Assert.assertEquals(actualTitle, expectedTitle, "Title validation failed!");//negative test
 
 
 

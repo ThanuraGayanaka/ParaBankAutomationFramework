@@ -1,0 +1,6 @@
+firstName,lastName,address,city,state,zipCode,phone,ssn,username,password
+John,Doe,123 Elm St,New York,NY,10001,1234567890,123-45-6789,johndoe1,pass1234
+Jane,Smith,456 Maple Ave,San Francisco,CA,94102,0987654321,987-65-4321,janesmith2,pass5678
+Michael,Brown,789 Oak Rd,Chicago,IL,60616,1122334455,321-54-9876,mikebrown3,pass9012
+Emily,Davis,101 Pine Ln,Houston,TX,77002,6677889900,654-32-1987,emilyd4,pass3456
+David,Wilson,202 Cedar Ct,Miami,FL,33101,4433221100,789-01-2345,davidw5,pass6789

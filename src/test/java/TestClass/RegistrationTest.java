@@ -1,43 +1,58 @@
 package TestClass;
 
-
 import BaseClass.basetest;
 import PageClass.RegistrationPage;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.CSVReaderUtil;
 
-import utils.ExcelReader;
+import java.io.File;
 
 public class RegistrationTest extends basetest {
 
     private RegistrationPage registrationPage;
 
-    // DataProvider to fetch test data from Excel file
-    @DataProvider(name = "registrationData")
-    public Object[][] getRegistrationData() {
-        // Load test data from Excel
-        return ExcelReader.getTestData("src/main/resources/signupData.xlsx", "Sheet1");
+    @BeforeMethod
+    @Override
+    public void setup() {
+        super.setup();
+        registrationPage = new RegistrationPage(driver);
     }
 
-    // Test method that takes data from Excel
+    @AfterMethod
+    @Override
+    public void teardown() {
+        super.teardown();
+    }
+
+    @DataProvider(name = "registrationData")
+    public Object[][] getRegistrationData() {
+        String csvFilePath = new File("src/main/resources/registrationData.csv").getAbsolutePath();
+        Object[][] testData = CSVReaderUtil.getTestData(csvFilePath);
+
+        if (testData == null || testData.length == 0) {
+            System.err.println("Test data not loaded properly. Check the CSV file path and content.");
+        } else {
+            System.out.println("Loaded Test Data: " + testData.length + " rows.");
+        }
+
+        return testData;
+    }
+
     @Test(dataProvider = "registrationData")
     public void testRegistration(String firstName, String lastName, String address, String city,
                                  String state, String zipCode, String phone, String ssn,
                                  String username, String password) {
-        // Initialize the RegistrationPage object
-        registrationPage = new RegistrationPage(driver);
 
-        // Fill the registration form using the provided data
         registrationPage.fillRegistrationForm(firstName, lastName, address, city, state, zipCode,
                 phone, ssn, username, password);
 
-        // Click on the Register button
         registrationPage.clickRegisterButton();
 
-        // Add assertions to verify if the registration was successful
-        // Example: Check if the URL after registration contains "success" or verify a success message
-        String successMessage = driver.getCurrentUrl();
-        Assert.assertTrue(successMessage.contains("success"), "Registration failed!");
+        String successMessage = registrationPage.getSuccessMessage();
+        Assert.assertTrue(successMessage.contains("successfully registered"), "Registration failed!");
     }
 }
